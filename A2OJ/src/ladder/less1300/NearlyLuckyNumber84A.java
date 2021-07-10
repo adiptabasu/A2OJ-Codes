@@ -1,32 +1,22 @@
 package ladder.less1300;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class NearlyLuckyNumber84A 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException
 	{
-		Scanner sc=new Scanner(System.in);
-		String num=sc.nextLine();
-		String temp=num;
-		temp=temp.replace("4", "");
-		temp=temp.replace("7", "");
-		String output;
-		if(temp.length()==0)
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input=br.readLine();
+		int c=0;
+		for(int i=0;i<input.length();i++)
 		{
-			temp=String.valueOf(num.length());
-			temp=temp.replace("4", "");
-			temp=temp.replace("7", "");
-			if(temp.length()==0)
-				output="YES";
-			else
-				output="NO";
+			if(input.charAt(i)=='4'||input.charAt(i)=='7')
+				++c;
 		}
-		else
-		{
-			output="NO";
-		}
-		System.out.println(output);
-		sc.close();
+		System.out.println(String.valueOf(c).replace("4", "").replace("7", "").length()==0?"YES":"NO");
+		br.close();
 	}
 }
