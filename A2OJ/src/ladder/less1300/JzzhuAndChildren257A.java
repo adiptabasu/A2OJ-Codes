@@ -7,36 +7,38 @@ public class JzzhuAndChildren257A
 	public static void main(String[] args) 
 	{
 		Scanner sc=new Scanner(System.in);
-		int n,m;
-		n=m=0;
-		String datamn[]=sc.nextLine().split(" ");
-		n=Integer.parseInt(datamn[0]);
-		m=Integer.parseInt(datamn[1]);
-		int highestPass=0;
-		int highestPos=0;
-		for(int i=0;i<n;i++)
+		String firstLine=sc.nextLine();
+		String secondLString=sc.nextLine();
+		System.out.println(lastPos(firstLine, secondLString));
+		sc.close();
+	}
+	public static int lastPos(String firstLine,String secondLine)
+	{
+		int pos=0;
+		int candyPerPass=Integer.parseInt(firstLine.split(" ")[1]);
+		double highestPass=0d;
+		int higestPos=0;
+		String temp[]=secondLine.split(" ");
+		for(int i=0;i<temp.length;i++)
 		{
-			int currNeed=sc.nextInt();
-			double currPass=Math.ceil(currNeed/m);
+			int candyNeeded=Integer.parseInt(temp[i]);
+			double checkPrec=(double)candyNeeded/candyPerPass;
+			double currPass=Math.ceil(checkPrec);
 			if(i==0)
 			{
-				highestPass=(int) currPass;
-				highestPos=i;
+				highestPass=currPass;
+				higestPos=i;
 			}
 			else
 			{
-				System.out.println((double)highestPass==currPass);
-//				System.out.print(highestPass<=currPass);
-//				System.out.println(" "+(highestPos<i));
-				if((highestPass<=currPass) &&(highestPos<i))
+				if((highestPass<=currPass)&&(higestPos<i))
 				{
-					highestPass=(int) currPass;
-					highestPos=i;
+					highestPass=currPass;
+					higestPos=i;
 				}
 			}
-			System.out.println(currNeed+" -> "+currPass+" ^ "+highestPass+" "+highestPos);
 		}
-		System.out.println(highestPos+1);
-		sc.close();
+		pos=higestPos+1;
+		return pos;
 	}
 }
